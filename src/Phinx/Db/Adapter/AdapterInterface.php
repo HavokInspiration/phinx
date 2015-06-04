@@ -180,21 +180,21 @@ interface AdapterInterface
     /**
      * Begin a transaction.
      *
-     * @return void
+     * @return bool
      */
     public function beginTransaction();
 
     /**
      * Commit a transaction.
      *
-     * @return void
+     * @return bool
      */
     public function commitTransaction();
 
     /**
      * Rollback a transaction.
      *
-     * @return void
+     * @return bool
      */
     public function rollbackTransaction();
 

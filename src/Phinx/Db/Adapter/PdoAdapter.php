@@ -85,7 +85,7 @@ abstract class PdoAdapter implements AdapterInterface
      */
     public function beginTransaction()
     {
-        $this->getConnection()->beginTransaction();
+        return $this->getConnection()->beginTransaction();
     }
 
     /**
@@ -93,7 +93,7 @@ abstract class PdoAdapter implements AdapterInterface
      */
     public function commitTransaction()
     {
-        $this->getConnection()->commit();
+        return $this->getConnection()->commit();
     }
 
     /**
@@ -101,7 +101,7 @@ abstract class PdoAdapter implements AdapterInterface
      */
     public function rollbackTransaction()
     {
-        $this->getConnection()->rollBack();
+        return $this->getConnection()->rollBack();
     }
 
     /**

@@ -64,7 +64,7 @@ class MysqlAdapterUnitTest extends \PHPUnit_Framework_TestCase
 
         $this->conn = $this->getMockBuilder('PDOMock')
                            ->disableOriginalConstructor()
-                           ->setMethods(array( 'query', 'exec', 'quote' ))
+                           ->setMethods(array( 'query', 'exec', 'quote', 'beginTransaction', 'commit', 'rollback' ))
                            ->getMock();
         $this->result = $this->getMockBuilder('stdclass')
                              ->disableOriginalConstructor()
@@ -166,19 +166,25 @@ class MysqlAdapterUnitTest extends \PHPUnit_Framework_TestCase
 
     public function testBeginTransaction()
     {
-        $this->assertExecuteSql("START TRANSACTION");
+        $this->conn->expects($this->once())
+            ->method('beginTransaction')
+            ->will($this->returnValue(true));
         $this->adapter->beginTransaction();
     }
 
     public function testCommitTransaction()
     {
-        $this->assertExecuteSql("COMMIT");
+        $this->conn->expects($this->once())
+            ->method('commit')
+            ->will($this->returnValue(true));
         $this->adapter->commitTransaction();
     }
 
     public function testRollbackTransaction()
     {
-        $this->assertExecuteSql("ROLLBACK");
+        $this->conn->expects($this->once())
+            ->method('rollback')
+            ->will($this->returnValue(true));
         $this->adapter->rollbackTransaction();
     }
 
