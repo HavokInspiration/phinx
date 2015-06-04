@@ -83,6 +83,30 @@ abstract class PdoAdapter implements AdapterInterface
     /**
      * {@inheritdoc}
      */
+    public function beginTransaction()
+    {
+        $this->getConnection()->beginTransaction();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function commitTransaction()
+    {
+        $this->getConnection()->commit();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function rollbackTransaction()
+    {
+        $this->getConnection()->rollBack();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function setOptions(array $options)
     {
         $this->options = $options;

@@ -95,30 +95,6 @@ class PostgresAdapter extends PdoAdapter implements AdapterInterface
     }
 
     /**
-     * {@inheritdoc}
-     */
-    public function beginTransaction()
-    {
-        $this->execute('BEGIN');
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function commitTransaction()
-    {
-        $this->execute('COMMIT');
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function rollbackTransaction()
-    {
-        $this->execute('ROLLBACK');
-    }
-
-    /**
      * Quotes a schema name for use in a query.
      *
      * @param string $schemaName Schema Name

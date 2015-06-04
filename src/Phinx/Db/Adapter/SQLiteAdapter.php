@@ -107,30 +107,6 @@ class SQLiteAdapter extends PdoAdapter implements AdapterInterface
     /**
      * {@inheritdoc}
      */
-    public function beginTransaction()
-    {
-        $this->execute('BEGIN TRANSACTION');
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function commitTransaction()
-    {
-        $this->execute('COMMIT');
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function rollbackTransaction()
-    {
-        $this->execute('ROLLBACK');
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function quoteTableName($tableName)
     {
         return str_replace('.', '`.`', $this->quoteColumnName($tableName));
